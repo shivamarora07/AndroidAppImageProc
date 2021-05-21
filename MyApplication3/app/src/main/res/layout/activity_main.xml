@@ -7,7 +7,29 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/btnAGCWD_Improve2"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:onClick="btnAGCWD_Improve_click"
+        android:text="AGCWD_Improve"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnAGCWD_ImproveDSUS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
+    <Button
+        android:id="@+id/btnLIME2"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:onClick="btnLIME_click"
+        android:text="LIME"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAGCWD_ImproveDSUS"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
     <TextView
         android:id="@+id/textView"
@@ -44,14 +66,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnLIME"
+        android:id="@+id/btnAGCWD_ImproveDSUS"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:onClick="btnLIME_click"
-        android:text="LIME"
+        android:layout_marginTop="4dp"
+        android:onClick="btnAGCWD_ImproveDSUS_click"
+        android:text="AGCWD_ImproveDSUS"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
     <Button
@@ -73,7 +96,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginBottom="20dp"
         android:onClick="btnAGCWD_click"
-        android:text="AGCWD"
+        android:text="AGCWD Input"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnAGCIE" />
@@ -109,7 +132,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginBottom="5dp"
         android:onClick="btnBIMEFDSUS_click"
-        android:text="BIMEF DSUS"
+        android:text="BIMEF DSUS Input"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/btnBIMEF"
         app:layout_constraintStart_toEndOf="@+id/btnAGCWDDSUS" />
@@ -121,7 +144,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginBottom="5dp"
         android:onClick="btnIAGCWD_click"
-        android:text="IAGCWD"
+        android:text="IAGCWD Input"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/btnBIMEF"
         app:layout_constraintStart_toEndOf="@+id/btnBIMEFDSUS" />
@@ -130,11 +153,10 @@
         android:id="@+id/imageViewOutput"
         android:layout_width="422dp"
         android:layout_height="238dp"
-        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/btnAGCWD_ImproveDSUS"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <Button
@@ -148,20 +170,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBIMEF" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="125dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:text="INPUT  OUTPUT"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
     <EditText
         android:id="@+id/editTextNumber"
@@ -181,8 +189,7 @@
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewOutput"
-        tools:text="a" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOutput" />
 
     <EditText
         android:id="@+id/editTextNumber2"

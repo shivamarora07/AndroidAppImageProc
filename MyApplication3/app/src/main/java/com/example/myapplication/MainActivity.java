@@ -108,6 +108,18 @@ public class MainActivity extends AppCompatActivity {
         ((ImageView)nImg).setImageBitmap(dstBitmap);
     }
 
+    public void btnAGCWD_Improve_click(View view){
+        AGCWDImprove(srcBitmap,dstBitmap);
+        View nImg = findViewById(R.id.imageViewOutput);
+        ((ImageView)nImg).setImageBitmap(dstBitmap);
+    }
+
+    public void btnAGCWD_ImproveDSUS_click(View view){
+        AGCWDImproveDSUS(srcBitmap,dstBitmap);
+        View nImg = findViewById(R.id.imageViewOutput);
+        ((ImageView)nImg).setImageBitmap(dstBitmap);
+    }
+
 
 
     public void btnLoad_click(View view){
@@ -142,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
     public native void LIME(Bitmap bitmapIn,Bitmap bitmapOut);
     public native void BIMEF(Bitmap bitmapIn,Bitmap bitmapOut);
     public native void AGCWD(Bitmap bitmapIn,Bitmap bitmapOut);
+    public native void AGCWDImprove(Bitmap bitmapIn,Bitmap bitmapOut);
+    public native void AGCWDImproveDSUS(Bitmap bitmapIn,Bitmap bitmapOut);
     public native void AGCWDInput(Bitmap bitmapIn,Bitmap bitmapOut, double alpha);
     public native void AGCIEDSUS(Bitmap bitmapIn,Bitmap bitmapOut);
     public native void AGCWDDSUS(Bitmap bitmapIn,Bitmap bitmapOut);

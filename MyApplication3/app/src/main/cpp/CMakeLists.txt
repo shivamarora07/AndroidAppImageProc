@@ -37,6 +37,7 @@ add_library( # Sets the name of the library.
              #BIMEF.cpp
              AGCWD.cpp
              IAGCWD.cpp
+             AGCWD_Improve.cpp
              Lime.cpp
              BIMEF_Trial.cpp
              intensity_transform.cpp

@@ -9,6 +9,8 @@
 #include "IAGCWD.h"
 #include "BIMEF_Trial.h"
 #include "Lime.h"
+#include "AGCWD_Improve.h"
+
 
 #include <android/log.h>
 
@@ -163,6 +165,52 @@ Java_com_example_myapplication_MainActivity_LIME(
     auto duration = (end-start)/1000000;
     __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Time for LIME is : %d", duration);
     MatToBitmap(env,LIME_dst,bitmapOut,false);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_myapplication_MainActivity_AGCWDImprove(
+        JNIEnv* env,
+        jobject /* this */, jobject bitmapIn, jobject bitmapOut) {
+    Mat AGCWD_improv_dst;
+    Mat src;
+    BitmapToMat(env, bitmapIn , src, false);
+    auto start = std::chrono::high_resolution_clock::now();
+    AGCWD_improve(src, AGCWD_improv_dst);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = (end-start)/1000000;
+    __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Time for AGCWD_improv is : %d", duration);
+    MatToBitmap(env,AGCWD_improv_dst,bitmapOut,false);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_myapplication_MainActivity_AGCWDImproveDSUS(
+        JNIEnv* env,
+        jobject /* this */, jobject bitmapIn, jobject bitmapOut) {
+    Mat AGCWD_improv_dst;
+    Mat src;
+    Mat dst_ds;
+    Mat dst;
+    BitmapToMat(env, bitmapIn , src, false);
+
+    auto startds = std::chrono::high_resolution_clock::now();
+    downscaleAGCWD_improve(src, dst_ds);
+    auto endds = std::chrono::high_resolution_clock::now();
+    auto durationds = (endds-startds)/1000000;
+    __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Time for AGCWD_improv downscale is : %d", durationds);
+
+    auto start = std::chrono::high_resolution_clock::now();
+    AGCWD_improve(dst_ds, AGCWD_improv_dst);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = (end-start)/1000000;
+    __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Time for AGCWD_improv is : %d", duration);
+
+    auto startus = std::chrono::high_resolution_clock::now();
+    upscaleAGCWD_improve(AGCWD_improv_dst, dst);
+    auto endus = std::chrono::high_resolution_clock::now();
+    auto durationus = (endus-startus)/1000000;
+    __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Time for AGCWD_improv upscale is : %d", durationus);
+    __android_log_print(ANDROID_LOG_ERROR, "TRACKERS", " [IMG_PROC] Total Time for AGCWD_improv is : %d", durationus+durationds+duration);
+    MatToBitmap(env,dst,bitmapOut,false);
 }
 
 extern "C" JNIEXPORT void JNICALL
